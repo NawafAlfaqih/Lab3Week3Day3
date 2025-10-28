@@ -44,7 +44,14 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        try {
+            if(email.contains("@"))
+                this.email = email;
+            else
+                throw new IllegalArgumentException();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Email is not correct...");
+        }
     }
 
     public void setPurchasedMediaList(ArrayList<Media> purchaseMediaList) {
@@ -63,8 +70,8 @@ public class User {
         shoppingCart.remove(media);
     }
 
-    public void checkout(Media m) {
-        purchaseMediaList.add(m);
+    public void checkout(Media media) {
+        purchaseMediaList.add(media);
     }
 
     public void checkout() {

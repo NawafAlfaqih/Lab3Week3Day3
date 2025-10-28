@@ -18,8 +18,8 @@ public class Music extends Media{
     }
 
     public void setArtist(String artist) {
+        this.artist = artist;
         setAuteur(artist);
-        artist = getAuteur();
     }
 
     public void listen(User user) {

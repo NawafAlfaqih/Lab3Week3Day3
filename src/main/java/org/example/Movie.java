@@ -18,7 +18,13 @@ public class Movie extends Media {
     }
 
     public void setDuration(int duration) {
-        this.duration = duration;
+        try {
+            if (duration < 0)
+                throw new IllegalArgumentException();
+            this.duration = duration;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Duration can't be negative....");
+        }
     }
 
     public void watch(User user) {

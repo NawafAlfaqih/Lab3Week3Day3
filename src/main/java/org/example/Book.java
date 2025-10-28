@@ -29,7 +29,13 @@ public class Book extends Media{
     }
 
     public void setStock(int stock) {
-        this.stock = stock;
+        try {
+            if (stock < 0)
+                throw new IllegalArgumentException();
+            this.stock = stock;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Stock can't be negative....");
+        }
     }
 
     public void setReview(ArrayList<Review> review) {
@@ -37,7 +43,13 @@ public class Book extends Media{
     }
 
     public void addReview(Review r) {
-        review.add(r);
+        try {
+            if (r.getRating() > 5 || r.getRating() < 0)
+                throw new IllegalArgumentException();
+            review.add(r);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Rating is not in Range!!");
+        }
     }
 
     public double getAverageRating() {
@@ -49,7 +61,7 @@ public class Book extends Media{
     }
 
     public void purchase(User user) {
-        user.addToCart(this);
+        user.checkout(this);
         stock--;
     }
 
@@ -58,8 +70,15 @@ public class Book extends Media{
     }
 
     public void restock(int quantity) {
-        stock += quantity;
-        System.out.println("Restocking "+stock+" is done successfully.....");
+        try {
+            if(quantity < 1)
+                throw new IllegalArgumentException();
+            stock += quantity;
+            System.out.println("Restocking "+stock+" is done successfully.....");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Restocking number is not valid....");
+        }
+
     }
 
     public String getMediaType() {

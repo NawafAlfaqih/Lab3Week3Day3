@@ -31,19 +31,23 @@ public class Review {
     }
 
     public void setRating(double rating) {
-        this.rating = rating;
+        try {
+            if (rating > 5 || rating < 0)
+                throw new IllegalArgumentException();
+            this.rating = rating;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Rating is not in Range!!");
+        }
     }
 
     public void setComment(String comment) {
         this.comment = comment;
     }
 
-    @Override
     public String toString() {
-        return "Review{" +
-                "username='" + username + '\'' +
-                ", rating=" + rating +
-                ", comment='" + comment + '\'' +
-                '}';
+        return "Review: " +
+                "username: '" + username + '\'' +
+                ", rating: " + rating +
+                ", comment: '" + comment + '\'';
     }
 }

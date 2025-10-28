@@ -27,6 +27,6 @@ public class AcademicBook extends Book{
 
     public String toString() {
         return "Book -> Title: " + getTitle() +", Auteur: "+ getAuteur() +", ISPN: "+ getISBN() +", Price: "+ getPrice()
-                +"\n Stock: "+ getStock() +" Average Rating -> "+ getAverageRating() +" Subject -> "+ getSubject();
+                +" Stock: "+ getStock() +" Average Rating -> "+ getAverageRating() +" Subject -> "+ getSubject();
     }
 }

@@ -45,7 +45,13 @@ public class Media {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        try {
+            if (price < 0)
+                throw new IllegalArgumentException();
+            this.price = price;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Price can't be negative....");
+        }
     }
 
     public String getMediaType() {

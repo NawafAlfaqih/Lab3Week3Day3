@@ -53,10 +53,35 @@ public class Store {
     }
 
     public Book searchBook(String title) {
-        for(Media m: media)
-            if(m instanceof Book && m.getTitle().equals(title))
-                return (Book) m;
+        for(Book b: getBookList())
+            if(b.getTitle().equals(title))
+                return b;
         System.out.println("Book " +title+" was not found....");
         return null;
+    }
+
+    //Extra Methods that helps in filtering
+    public ArrayList<Book> getBookList() {
+        ArrayList<Book> books = new ArrayList<>();
+        for(Media m: media)
+            if(m instanceof Book)
+                books.add((Book)m);
+        return books;
+    }
+
+    public ArrayList<Music> getMusicList() {
+        ArrayList<Music> music = new ArrayList<>();
+        for(Media m: media)
+            if(m instanceof Music)
+                music.add((Music)m);
+        return music;
+    }
+
+    public ArrayList<Movie> getMovieList() {
+        ArrayList<Movie> movie = new ArrayList<>();
+        for(Media m: media)
+            if(m instanceof Movie)
+                movie.add((Movie)m);
+        return movie;
     }
 }
